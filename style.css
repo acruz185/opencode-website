@@ -1,0 +1,331 @@
+/* CSS Custom Properties for Theming — Girls Who Code Official Palette */
+/* Source: GWC Design Guide / girlswhocode.com CSS variables */
+
+:root {
+  /* GWC Brand Colors (from official design system) */
+  --gwc-teal-1: #d7f9f4;   /* Lightest teal tint */
+  --gwc-teal-2: #43d6b9;   /* Light teal */
+  --gwc-teal-3: #0d9c90;   /* Primary brand teal (Teal 3) */
+  --gwc-teal-4: #0c6b68;   /* Dark teal */
+
+  --gwc-blue-1: #e5f8ff;   /* Lightest blue tint */
+  --gwc-blue-2: #0169e1;   /* Bright blue (programmatic) */
+  --gwc-blue-3: #0d38d3;   /* Medium blue */
+  --gwc-blue-4: #003046;   /* Dark blue/navy (logo on light) */
+
+  --gwc-yellow-1: #fff9e2; /* Lightest yellow tint */
+  --gwc-yellow-2: #fce688; /* Light yellow */
+  --gwc-yellow-3: #fdd946; /* Gold yellow */
+
+  --gwc-red-1: #feefee;    /* Lightest red tint */
+  --gwc-red-2: #f37c6f;    /* Coral */
+  --gwc-red-3: #ea3850;    /* Bright red */
+  --gwc-red-4: #a31746;    /* Dark red */
+
+  --gwc-orange-1: #fff3e8; /* Lightest orange tint */
+  --gwc-orange-2: #f9b88c; /* Light orange */
+  --gwc-orange-3: #fa7815; /* Bright orange */
+
+  --gwc-black-1: #ededed;  /* Lightest neutral */
+  --gwc-black-2: #cecece;  /* Light neutral */
+  --gwc-black-3: #7a7a78;  /* Medium neutral */
+  --gwc-black-4: #1a1918;  /* Darkest neutral */
+
+  --gwc-white: #ffffff;
+
+  /* Semantic tokens (light theme defaults) */
+  --color-bg: var(--gwc-teal-1);
+  --color-bg-elevated: var(--gwc-white);
+  --color-text: var(--gwc-black-4);
+  --color-text-muted: var(--gwc-black-3);
+  --color-primary: var(--gwc-teal-3);
+  --color-primary-hover: var(--gwc-teal-4);
+  --color-primary-light: var(--gwc-teal-2);
+  --color-primary-pale: var(--gwc-teal-1);
+  --color-border: var(--gwc-teal-1);
+  --color-border-strong: var(--gwc-teal-2);
+  --color-card-bg: var(--gwc-white);
+  --color-focus: var(--gwc-teal-3);
+  --color-error: var(--gwc-red-3);
+
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --max-width: 720px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(13, 156, 144, 0.12);
+  --shadow-elevated: 0 4px 12px rgba(13, 156, 144, 0.18);
+  --transition: 0.2s ease;
+}
+
+/* Dark theme — using GWC dark neutrals with teal accents */
+[data-theme="dark"] {
+  --color-bg: var(--gwc-black-4);
+  --color-bg-elevated: #242322;           /* Slightly lighter than black-4 */
+  --color-text: var(--gwc-white);
+  --color-text-muted: var(--gwc-black-2);
+  --color-primary: var(--gwc-teal-2);     /* Lighter teal for dark mode contrast */
+  --color-primary-hover: var(--gwc-teal-1);
+  --color-primary-light: var(--gwc-teal-3);
+  --color-primary-pale: var(--gwc-teal-4);
+  --color-border: var(--gwc-teal-4);
+  --color-border-strong: var(--gwc-teal-3);
+  --color-card-bg: #242322;
+  --color-focus: var(--gwc-teal-2);
+  --color-error: var(--gwc-red-2);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Focus styles for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Header */
+header {
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  background: var(--color-bg-elevated);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.intro {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+#theme-toggle:hover {
+  background: var(--color-border);
+  border-color: var(--color-border-strong);
+}
+
+#theme-toggle:focus-visible {
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+[data-theme="light"] .theme-icon::before {
+  content: "🌙";
+}
+
+[data-theme="dark"] .theme-icon::before {
+  content: "☀️";
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+section {
+  margin-bottom: var(--spacing-xl);
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+/* Programs Section */
+.program-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.program-list li {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.program-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--color-border-strong);
+}
+
+.program-list h3,
+.program-list p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.program-list p {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Impact Section */
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.stat {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.stat:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-elevated);
+}
+
+.stat dt {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.stat dd {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+}
+
+/* Footer */
+footer {
+  padding: var(--spacing-md);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+footer p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Wide layout (≥640px) */
+@media (min-width: 640px) {
+  header {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  main {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .program-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .program-list li {
+    flex: 1 1 calc(50% - var(--spacing-xs));
+    min-width: 280px;
+  }
+
+  .impact-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
